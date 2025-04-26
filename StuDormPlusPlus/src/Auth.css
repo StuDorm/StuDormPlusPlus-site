@@ -1,0 +1,147 @@
+:root {
+    --dark-bg: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --accent-color: #424242;
+    --input-bg: #2d2d2d;
+    --input-border: #333;
+    --primary-btn: #4a4a4a;
+    --hover-btn: #5e5e5e;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-bg);
+    /*color: var(--text-color);*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /*padding: 20px;*/
+    line-height: 1.6;
+}
+
+.registration-card {
+    /*background-color: var(--card-bg);*/
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    /*padding: 30px;*/
+    width: 100%;
+    /*max-width: 60%;*/
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.credentials-section {
+    background-color: rgba(66, 66, 66, 0.2);
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.credentials-section h2 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+input, select, textarea {
+    width: 70vh;
+    padding: 12px;
+    background: rgba(70, 70, 70, 0.4);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    color: var(--text-color);
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(66, 66, 66, 0.2);
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+}
+
+.radio-option input {
+    width: auto;
+    margin-right: 8px;
+}
+
+.remember-me {
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* можно настроить отступ по необходимости */
+}
+
+button {
+    width: 70vh;
+    background-color: var(--primary-btn);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--hover-btn);
+}
+
+.required-field::after {
+    content: " *";
+    color: #ff4444;
+}
+
+@media (max-width: 600px) {
+    .registration-card {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

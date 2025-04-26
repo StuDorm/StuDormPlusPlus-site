@@ -1,0 +1,113 @@
+/* Общий стиль шапки */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    /*background: rgba(51, 51, 51, 0.8); !* тёмный полупрозрачный фон *!*/
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    position: relative;
+    z-index: 1000;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Логотип */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Иконка бургера */
+.burger {
+    display: none;
+    cursor: pointer;
+    color: white;
+    z-index: 1001;
+}
+
+/* Меню навигации */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #61dafb; /* голубой цвет при наведении */
+}
+
+/* Затемнение фона при открытом меню */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* полупрозрачный чёрный */
+    z-index: 900;
+    transition: opacity 0.3s ease;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -200vh; /* Скрыто */
+        width: 250px;
+        height: 100vh;
+        background: rgba(68, 68, 68, 0.5); /* полупрозрачный тёмный фон */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+
+    .nav-menu.open {
+        right: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-menu li {
+        margin-bottom: 10px;
+    }
+
+    .menu-overlay.open {
+        display: block;
+    }
+}

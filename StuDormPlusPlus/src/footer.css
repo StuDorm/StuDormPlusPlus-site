@@ -1,0 +1,12 @@
+/* src/components/Footer.css */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #282c34;
+    color: white;
+
+    background: rgba(70, 70, 70, 0.2); /* полупрозрачный фон */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* для Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}

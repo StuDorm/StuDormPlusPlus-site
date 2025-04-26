@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from "./header.jsx";
 import Footer from "./footer.jsx";
+import './FindNeighbor.css'
 
 const FindNeighbor = () => {
     const [rooms, setRooms] = useState([]);
@@ -20,7 +21,7 @@ const FindNeighbor = () => {
         // Функция для получения данных с сервера
         const fetchRooms = async () => {
             try {
-                const response = await fetch('http://localhost:8000/rooms'); // Адрес вашего FastAPI сервера
+                const response = await fetch(ip_server);
                 const data = await response.json();
                 setRooms(data);
             } catch (error) {
@@ -74,15 +75,6 @@ const FindNeighbor = () => {
                     <option value="4">4 курс</option>
                 </select>
 
-                <select id="nationality" value={filters.nationality} onChange={handleFilterChange}>
-                    <option value="all">Любая</option>
-                    <option value="russian">Русский(ая)</option>
-                    <option value="tatar">Татарин(ка)</option>
-                    <option value="ukrainian">Украинец(ка)</option>
-                    <option value="belarusian">Беларус(ка)</option>
-                    <option value="other">Другая</option>
-                </select>
-
                 <select id="sleep" value={filters.sleep} onChange={handleFilterChange}>
                     <option value="all">Любой</option>
                     <option value="early">Ранние пташки (до 23:00)</option>
@@ -106,15 +98,6 @@ const FindNeighbor = () => {
             </div>
 
             <table>
-                <thead>
-                <tr>
-                    <th>Комната</th>
-                    <th>Корпус</th>
-                    <th>Этаж</th>
-                    <th>Статус</th>
-                    <th>Жильцы</th>
-                </tr>
-                </thead>
                 <tbody>
                 {filteredRooms.map((room) => (
                     <tr key={room.roomNumber}>

@@ -1,0 +1,31 @@
+/* Пример CSS для создания движения таракана */
+.cockroach {
+    position: absolute;
+    transition: all 2s ease-in-out;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+/* Стили для кнопки */
+button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff5722;
+}
