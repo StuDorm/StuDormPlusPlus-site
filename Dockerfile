@@ -4,11 +4,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install
 
-COPY ./StuDormPlusPlus ./StuDormPlusPlus
-
-WORKDIR /app/StuDormPlusPlus
+COPY ./StuDormPlusPlus .
 
 RUN npm run build
 
