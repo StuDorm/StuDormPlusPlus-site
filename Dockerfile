@@ -6,7 +6,9 @@ COPY package*.json ./
 
 RUN npm ci
 
-COPY ./StuDormPlusPlus .
+COPY ./StuDormPlusPlus ./StuDormPlusPlus
+
+WORKDIR /app/StuDormPlusPlus
 
 RUN npm run build
 
