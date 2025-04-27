@@ -19,20 +19,24 @@ function Auth() {
         waketime: ''
     });
 
-    const formatDateTime = (time) => {
-        if (!time) return ''; // Возвращаем пустую строку, если время не передано
-        const [hours, minutes] = time.split(":");
-        return `${hours}:${minutes}:00`; // Возвращаем в формате HH:MM:00
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
     };
 
-    const handleInputChange = (e) => {}
-
+    const formatDateTime = (date, time) => {
+        return `${date}T${time}:00Z`;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
             alert('Пароли не совпадают!');
+            // console.log('IF INSIDE')
             return;
         }
 
@@ -42,27 +46,26 @@ function Auth() {
             firstname: formData.firstname,
             lastname: formData.lastname,
             patronymic: formData.patronymic || '',
-            course: formData.course ? parseInt(formData.course, 10) : null, // Убедитесь, что курс это число
+            course: parseInt(formData.course),
             birth_date: new Date(formData.birthdate).toISOString(),
             gender: formData.gender,
             hobby: formData.hobby || '',
-            bed_time: formatDateTime(formData.bedtime),
-            wake_up_time: formatDateTime(formData.waketime)
+            bed_time: formatDateTime(formData.birthdate, formData.bedtime),
+            wake_up_time: formatDateTime(formData.birthdate, formData.waketime)
         };
+    console.log(payload)
+        // try {
+        const response = await fetch("http://prod-team-12-ecl1h2gh.hack.prodcontest.ru:443/register/", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload),
+            mode: 'no-cors'
+        });
 
-        console.log(payload);
 
-        try {
-            const response = await fetch("http://prod-team-12-ecl1h2gh.hack.prodcontest.ru:443/register/", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload),
-                mode: 'no-cors'
-            });
-
-            console.log(response.statusText);
+        console.log(response.statusText)
             if (response.ok) {
                 alert('Регистрация успешна!');
                 localStorage.setItem('user', JSON.stringify(payload));
@@ -71,9 +74,9 @@ function Auth() {
                 const errorData = await response.json();
                 alert('Ошибка регистрации: ' + (errorData.detail || 'Неизвестная ошибка'));
             }
-        } catch (error) {
-            alert('Ошибка соединения с сервером');
-        }
+    // } catch (error) {
+    //         // alert('Ошибка соединения с сервером');
+    //     }
     };
 
     return (
