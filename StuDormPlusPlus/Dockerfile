@@ -1,12 +1,12 @@
-FROM node:20
+FROM node:18-alpine
 
 WORKDIR /app
 
-COPY StuDormPlusPlus/package*.json ./
+COPY package.json .
 
 RUN npm install
 
-COPY StuDormPlusPlus/* .
+COPY . .
 
 RUN npm run build
 
