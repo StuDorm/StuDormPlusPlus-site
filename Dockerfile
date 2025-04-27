@@ -6,7 +6,7 @@ COPY StuDormPlusPlus/package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY StuDormPlusPlus/* .
 
 RUN npm run build
 
