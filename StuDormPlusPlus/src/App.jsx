@@ -6,7 +6,7 @@ import Login from './Login.jsx'
 import FindNeighbor from "./FindNeighbor.jsx";
 import SecretSection from "./SecretSection.jsx";
 import Profile from "./Profile.jsx"
-import NotFound from "./NotFound.jsx"; // Подключаем компонент Main
+import NotFound from "./NotFound.jsx";
 
 function App() {
     return (
@@ -25,3 +25,5 @@ function App() {
 }
 
 export default App;
+
+//by Mirik9724
