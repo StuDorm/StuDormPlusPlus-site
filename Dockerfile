@@ -2,11 +2,11 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package.json .
+COPY StuDormPlusPlus/package.json StuDormPlusPlus/package-lock.json ./
 
 RUN npm install
 
-COPY . .
+COPY StuDormPlusPlus/ ./
 
 RUN npm run build
 
